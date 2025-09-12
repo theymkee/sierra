@@ -948,7 +948,7 @@ function Luna:CreateWindow(WindowSettings)
 				HomeTabPage.detailsholder.dashboard.Client.Subtitle.Text = "Ваш эксплоит поддерживает этот скрипт."
 				break
 			else
-				HomeTabPage.detailsholder.dashboard.Client.Subtitle.Text = "Ваш эксплоит оффициально не поддерживается."
+				HomeTabPage.detailsholder.dashboard.Client.Subtitle.Text = "Ваш эксплоит не поддерживается оффициально этим скриптом."
 				break
 			end
 		end
@@ -1039,7 +1039,7 @@ function Luna:CreateWindow(WindowSettings)
 
 
 				-- Players
-				HomeTabPage.detailsholder.dashboard.Server.Players.Value.Text = #Players:GetPlayers().." playing"
+				HomeTabPage.detailsholder.dashboard.Server.Players.Value.Text = #Игроки:GetPlayers().." играют"
 				HomeTabPage.detailsholder.dashboard.Server.MaxPlayers.Value.Text = Players.MaxPlayers.." players can join this server"
 
 				-- Ping
