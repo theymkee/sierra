@@ -662,8 +662,8 @@ function Luna:CreateWindow(WindowSettings)
 
 	WindowSettings.KeySettings.SecondAction = Kwargify({
 		Enabled = false,
-		Type = "Discord", -- Link/Discord
-		Parameter = "" -- for discord, add the invite link like home tab. for link, type the link of ur key sys
+		Type = "Telegram", -- Link/Telegram
+		Parameter = "" -- for Telegram, add the invite link like home tab. for link, type the link of ur key sys
 	}, WindowSettings.KeySettings.SecondAction)
 
 	local Passthrough = false
@@ -743,8 +743,8 @@ function Luna:CreateWindow(WindowSettings)
 			local Btn = KeySystem.Action.Copy
 			local typesys = KeySettings.SecondAction.Type
 			
-			if typesys == "Discord" then
-				Btn = KeySystem.Action.Discord
+			if typesys == "Telegram" then
+				Btn = KeySystem.Action.Telegram
 			end
 
 			local AttemptsRemaining = math.random(2, 5)
@@ -891,7 +891,7 @@ function Luna:CreateWindow(WindowSettings)
 		HomeTabSettings = Kwargify({
 			Icon = 1,
 			SupportedExecutors = {"Vega X", "Delta", "Nihon", "Xeno"},
-			DiscordInvite = "noinvitelink"
+			TelegramInvite = "noinvitelink"
 		}, HomeTabSettings or {})
 
 		local HomeTab = {}
@@ -950,8 +950,8 @@ function Luna:CreateWindow(WindowSettings)
 		end
 
 
-		HomeTabPage.detailsholder.dashboard.Discord.Interact.MouseButton1Click:Connect(function()
-			setclipboard(tostring("https://t.me/"..HomeTabSettings.DiscordInvite))
+		HomeTabPage.detailsholder.dashboard.Telegram.Interact.MouseButton1Click:Connect(function()
+			setclipboard(tostring("https://t.me/"..HomeTabSettings.TelegramInvite))
 			if request then
 				request({
 					Url = 'http://127.0.0.1:6463/rpc?v=1',
@@ -963,7 +963,7 @@ function Luna:CreateWindow(WindowSettings)
 					Body = HttpService:JSONEncode({
 						cmd = 'INVITE_BROWSER',
 						nonce = HttpService:GenerateGUID(false),
-						args = {code = HomeTabSettings.DiscordInvite}
+						args = {code = HomeTabSettings.TelegramInvite}
 					})
 				})
 			end
