@@ -136,12 +136,12 @@ local function BlurModule(Frame)
 	local gTokenMH = 99999999
 	local gToken = math.random(1, gTokenMH)
 
-	local DepthOfField = Instance.new('DepthOfFieldEffect', game:GetService('Lighting'))
-	DepthOfField.FarIntensity = 0
-	DepthOfField.FocusDistance = 51.6
-	DepthOfField.InFocusRadius = 50
-	DepthOfField.NearIntensity = 6
-	DepthOfField.Name = "DPT_"..gToken
+	-- local DepthOfField = Instance.new('DepthOfFieldEffect', game:GetService('Lighting'))
+	-- DepthOfField.FarIntensity = 0
+	-- DepthOfField.FocusDistance = 51.6
+	-- DepthOfField.InFocusRadius = 50
+	-- DepthOfField.NearIntensity = 6
+	-- DepthOfField.Name = "DPT_"..gToken
 
 	local frame = Instance.new('Frame')
 	frame.Parent = Frame
