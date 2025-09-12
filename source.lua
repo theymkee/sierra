@@ -759,15 +759,15 @@ function Luna:CreateWindow(WindowSettings)
 			end
 			
 			Btn.Interact.MouseButton1Click:Connect(function()
-				if typesys == "Discord" then
-					setclipboard(tostring("https://discord.gg/"..KeySettings.SecondAction.Parameter)) -- Hunter if you see this I added copy also was too lazy to send u msg
+				if typesys == "Telegram" then
+					setclipboard(tostring("https://t.me/roofdevbloggscript"..KeySettings.SecondAction.Parameter)) -- Hunter if you see this I added copy also was too lazy to send u msg
 					if request then
 						request({
 							Url = 'http://127.0.0.1:6463/rpc?v=1',
 							Method = 'POST',
 							Headers = {
 								['Content-Type'] = 'application/json',
-								Origin = 'https://discord.com'
+								Origin = 'https://telegram.org/'
 							},
 							Body = HttpService:JSONEncode({
 								cmd = 'INVITE_BROWSER',
@@ -951,14 +951,14 @@ function Luna:CreateWindow(WindowSettings)
 
 
 		HomeTabPage.detailsholder.dashboard.Discord.Interact.MouseButton1Click:Connect(function()
-			setclipboard(tostring("https://discord.gg/"..HomeTabSettings.DiscordInvite))
+			setclipboard(tostring("https://t.me/"..HomeTabSettings.DiscordInvite))
 			if request then
 				request({
 					Url = 'http://127.0.0.1:6463/rpc?v=1',
 					Method = 'POST',
 					Headers = {
 						['Content-Type'] = 'application/json',
-						Origin = 'https://discord.com'
+						Origin = 'https://t.me'
 					},
 					Body = HttpService:JSONEncode({
 						cmd = 'INVITE_BROWSER',
