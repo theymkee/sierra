@@ -1563,16 +1563,10 @@ local IconModule = {
 local request = (syn and syn.request) or (http and http.request) or http_request or nil
 local tweeninfo = TweenInfo.new(0.3, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out)
 local PresetGradients = {
-	["Nightlight (Classic)"] = {Color3.fromRGB(147, 255, 239), Color3.fromRGB(201,211,233), Color3.fromRGB(255, 167, 227)},
-	["Nightlight (Neo)"] = {Color3.fromRGB(117, 164, 206), Color3.fromRGB(123, 201, 201), Color3.fromRGB(224, 138, 175)},
-	Starlight = {Color3.fromRGB(147, 255, 239), Color3.fromRGB(181, 206, 241), Color3.fromRGB(214, 158, 243)},
-	Solar = {Color3.fromRGB(242, 157, 76), Color3.fromRGB(240, 179, 81), Color3.fromRGB(238, 201, 86)},
-	Sparkle = {Color3.fromRGB(199, 130, 242), Color3.fromRGB(221, 130, 238), Color3.fromRGB(243, 129, 233)},
-	Lime = {Color3.fromRGB(170, 255, 127), Color3.fromRGB(163, 220, 138), Color3.fromRGB(155, 185, 149)},
-	Vine = {Color3.fromRGB(0, 191, 143), Color3.fromRGB(0, 126, 94), Color3.fromRGB(0, 61, 46)},
-	Cherry = {Color3.fromRGB(148, 54, 54), Color3.fromRGB(168, 67, 70), Color3.fromRGB(188, 80, 86)},
-	Daylight = {Color3.fromRGB(51, 156, 255), Color3.fromRGB(89, 171, 237), Color3.fromRGB(127, 186, 218)},
-	Blossom = {Color3.fromRGB(255, 165, 243), Color3.fromRGB(213, 129, 231), Color3.fromRGB(170, 92, 218)},
+	["Ночной свет"] = {Color3.fromRGB(147, 255, 239), Color3.fromRGB(201,211,233), Color3.fromRGB(255, 167, 227)},
+	["Звездный свет"] = {Color3.fromRGB(147, 255, 239), Color3.fromRGB(181, 206, 241), Color3.fromRGB(214, 158, 243)},
+	["Клубничный зефир"] = {Color3.fromRGB(255, 179, 198), Color3.fromRGB(255, 194, 209), Color3.fromRGB(255, 229, 236)},
+	["Сладкая вата"] = {Color3.fromRGB(205, 180, 219), Color3.fromRGB(255, 200, 221), Color3.fromRGB(255, 175, 204)},
 }
 
 local function GetIcon(icon, source)
@@ -6170,18 +6164,18 @@ function Luna:CreateWindow(WindowSettings)
 			local selectedConfig = nil
 
 			local Title = Elements.Template.Title:Clone()
-			Title.Text = "Configurations"
+			Title.Text = "Конфигурация"
 			Title.Visible = true
 			Title.Parent = TabPage
 			Title.TextTransparency = 1
 			TweenService:Create(Title, TweenInfo.new(0.4, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {TextTransparency = 0}):Play()
 
-			Tab:CreateSection("Config Creator")
+			Tab:CreateSection("Сохранить конфиг")
 
 			Tab:CreateInput({
-				Name = "Config Name",
-				Description = "Insert a name for your to be created config.",
-				PlaceholderText = "Name",
+				Name = "Название конфига",
+				Description = nil,
+				PlaceholderText = "",
 				CurrentValue = "",
 				Numeric = false,
 				MaxCharacters = nil,
@@ -6194,15 +6188,15 @@ function Luna:CreateWindow(WindowSettings)
 			local configSelection
 
 			Tab:CreateButton({
-				Name = "Create Config",
-				Description = "Create a config with all of your current settings.",
+				Name = "Создать конфиг",
+				Description = nil,
 				Callback = function()
 					if not inputPath or string.gsub(inputPath, " ", "") == "" then
 						Luna:Notification({
 							Title = "Interface",
 							Icon = "warning",
 							ImageSource = "Material",
-							Content = "Config name cannot be empty."
+							Content = "Название конфига не может быть пустым."
 						})
 						return
 					end
@@ -6213,7 +6207,7 @@ function Luna:CreateWindow(WindowSettings)
 							Title = "Interface",
 							Icon = "error",
 							ImageSource = "Material",
-							Content = "Unable to save config, return error: " .. returned
+							Content = "Не удалось сохранить конфиг, ошибка: " .. returned
 						})
 					end
 
@@ -6221,19 +6215,19 @@ function Luna:CreateWindow(WindowSettings)
 						Title = "Interface",
 						Icon = "info",
 						ImageSource = "Material",
-						Content = string.format("Created config %q", inputPath),
+						Content = string.format("Создан конфиг %q", inputPath),
 					})
 
 					configSelection:Set({ Options = Luna:RefreshConfigList() })
 				end
 			})
 
-			Tab:CreateSection("Config Load/Settings")
+			Tab:CreateSection("Загрузка/настройка конфига")
 
 
 			configSelection = Tab:CreateDropdown({
-				Name = "Select Config",
-				Description = "Select a config to load your settings on.",
+				Name = "Выбрать конфиг",
+				Description = nil,
 				Options = Luna:RefreshConfigList(),
 				CurrentOption = {},
 				MultipleOptions = false,
@@ -6244,8 +6238,8 @@ function Luna:CreateWindow(WindowSettings)
 			})
 
 			Tab:CreateButton({
-				Name = "Load Config",
-				Description = "Load your saved config settings.",
+				Name = "Загрузить конфиг",
+				Description = nil,
 				Callback = function()
 					local success, returned = Luna:LoadConfig(selectedConfig)
 					if not success then
@@ -6253,7 +6247,7 @@ function Luna:CreateWindow(WindowSettings)
 							Title = "Interface",
 							Icon = "error",
 							ImageSource = "Material",
-							Content = "Unable to load config, return error: " .. returned
+							Content = "Не удалось сохранить конфиг, ошибка: " .. returned
 						})
 						return
 					end
@@ -6262,14 +6256,14 @@ function Luna:CreateWindow(WindowSettings)
 						Title = "Interface",
 						Icon = "info",
 						ImageSource = "Material",
-						Content = string.format("Loaded config %q", selectedConfig),
+						Content = string.format("Загружен конфиг %q", selectedConfig),
 					})
 				end
 			})
 
 			Tab:CreateButton({
-				Name = "Overwrite Config",
-				Description = "Overwrite your current config settings.",
+				Name = "Перезаписать конфиг",
+				Description = nil,
 				Callback = function()
 					local success, returned = Luna:SaveConfig(selectedConfig)
 					if not success then
@@ -6277,7 +6271,7 @@ function Luna:CreateWindow(WindowSettings)
 							Title = "Interface",
 							Icon = "error",
 							ImageSource = "Material",
-							Content = "Unable to overwrite config, return error: " .. returned
+							Content = "Не удалось перезаписать конфиг, ошибка: " .. returned
 						})
 						return
 					end
@@ -6286,14 +6280,14 @@ function Luna:CreateWindow(WindowSettings)
 						Title = "Interface",
 						Icon = "info",
 						ImageSource = "Material",
-						Content = string.format("Overwrote config %q", selectedConfig),
+						Content = string.format("Перезаписан конфиг %q", selectedConfig),
 					})
 				end
 			})
 
 			Tab:CreateButton({
-				Name = "Refresh Config List",
-				Description = "Refresh the current config list.",
+				Name = "Перезагрузить лист конфигов",
+				Description = nil,
 				Callback = function()
 					configSelection:Set({ Options = Luna:RefreshConfigList() })
 				end,
@@ -6301,47 +6295,47 @@ function Luna:CreateWindow(WindowSettings)
 
 			local loadlabel
 			Tab:CreateButton({
-				Name = "Set as autoload",
-				Description = "Set a config to auto load setting in your next session.",
+				Name = "Поставить в автозагрузку",
+				Description = nil,
 				Callback = function()
 					local name = selectedConfig
 					writefile(Luna.Folder .. "/settings/autoload.txt", name)
-					loadlabel:Set({ Text = "Current autoload config: " .. name })
+					loadlabel:Set({ Text = "Текущий конфиг в автозагрузке: " .. name })
 
 					Luna:Notification({
 						Title = "Interface",
 						Icon = "info",
 						ImageSource = "Material",
-						Content = string.format("Set %q to auto load", name),
+						Content = string.format("Поставить %q в автозагрузку", name),
 					})
 				end,
 			})
 
 			loadlabel = Tab:CreateParagraph({
-				Title = "Current Auto Load",
-				Text = "None"
+				Title = "Текущий конфиг в автозагрузке",
+				Text = "Пусто"
 			})
 
 			Tab:CreateButton({
-				Name = "Delete Autoload",
-				Description = "Delete The Autoload File",
+				Name = "Удалить конфиг",
+				Description = nil,
 				Callback = function()
 					local name = selectedConfig
 					delfile(Luna.Folder .. "/settings/autoload.txt")
-					loadlabel:Set({ Text = "None" })
+					loadlabel:Set({ Text = "Пусто" })
 
 					Luna:Notification({
 						Title = "Interface",
 						Icon = "info",
 						ImageSource = "Material",
-						Content = "Deleted Autoload",
+						Content = "Конфиг %q удален из автозагрузки", name),
 					})
 				end,
 			})
 
 			if isfile(Luna.Folder .. "/settings/autoload.txt") then
 				local name = readfile(Luna.Folder .. "/settings/autoload.txt")
-				loadlabel:Set( { Text = "Current autoload config: " .. name })
+				loadlabel:Set( { Text = "Текущий конфиг в автозагрузке: " .. name })
 			end     
 		end
 
@@ -6435,26 +6429,26 @@ function Luna:CreateWindow(WindowSettings)
 		function Tab:BuildThemeSection()
 
 			local Title = Elements.Template.Title:Clone()
-			Title.Text = "Theming"
+			Title.Text = "Темы"
 			Title.Visible = true
 			Title.Parent = TabPage
 			Title.TextTransparency = 1
 			TweenService:Create(Title, TweenInfo.new(0.4, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {TextTransparency = 0}):Play()
 
-			Tab:CreateSection("Custom Editor")
+			Tab:CreateSection("Пользовательские настройки")
 
 			local c1cp = Tab:CreateColorPicker({
-				Name = "Color 1",
+				Name = "Цвет 1",
 				Color = Color3.fromRGB(117, 164, 206),
 			}, "LunaInterfaceSuitePrebuiltCPC1") -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
 
 			local c2cp = Tab:CreateColorPicker({
-				Name = "Color 2",
+				Name = "Цвет 2",
 				Color = Color3.fromRGB(123, 201, 201),
 			}, "LunaInterfaceSuitePrebuiltCPC2")
 
 			local c3cp = Tab:CreateColorPicker({
-				Name = "Color 3",
+				Name = "Цвет 3",
 				Color = Color3.fromRGB(224, 138, 184),
 			}, "LunaInterfaceSuitePrebuiltCPC3") 
 
@@ -6487,7 +6481,7 @@ function Luna:CreateWindow(WindowSettings)
 				end
 			})
 
-			Tab:CreateSection("Preset Gradients")
+			Tab:CreateSection("Пресеты градиента")
 
 			for i,v in pairs(PresetGradients) do
 				Tab:CreateButton({
@@ -6534,10 +6528,10 @@ function Luna:CreateWindow(WindowSettings)
 		SetFolder()
 
 		function Luna:SaveConfig(Path)
-			if isStudio then return "Config system unavailable." end
+			if isStudio then return "Система конфигов недоступна." end
 
 			if (not Path) then
-				return false, "Please select a config file."
+				return false, "Пожалуйста выберите файл конфига."
 			end
 
 			local fullPath = Luna.Folder .. "/settings/" .. Path .. ".luna"
@@ -6555,7 +6549,7 @@ function Luna:CreateWindow(WindowSettings)
 
 			local success, encoded = pcall(HttpService.JSONEncode, HttpService, data)
 			if not success then
-				return false, "Unable to encode into JSON data"
+				return false, "Не удалось декодировать данные JSON"
 			end
 
 			writefile(fullPath, encoded)
@@ -6563,17 +6557,17 @@ function Luna:CreateWindow(WindowSettings)
 		end
 
 		function Luna:LoadConfig(Path)
-			if isStudio then return "Config system unavailable." end
+			if isStudio then return "Система конфигов недоступна." end
 
 			if (not Path) then
-				return false, "Please select a config file."
+				return false, "Пожалуйста выберите файл конфига."
 			end
 
 			local file = Luna.Folder .. "/settings/" .. Path .. ".luna"
 			if not isfile(file) then return false, "Invalid file" end
 
 			local success, decoded = pcall(HttpService.JSONDecode, HttpService, readfile(file))
-			if not success then return false, "Unable to decode JSON data." end
+			if not success then return false, "Не удалось декодировать данные JSON." end
 
 			for _, option in next, decoded.objects do
 				if ClassParser[option.type] then
@@ -6589,7 +6583,7 @@ function Luna:CreateWindow(WindowSettings)
 		function Luna:LoadAutoloadConfig()
 			if isfile(Luna.Folder .. "/settings/autoload.txt") then
 
-				if isStudio then return "Config system unavailable." end
+				if isStudio then return "Система конфигов недоступна." end
 
 				local name = readfile(Luna.Folder .. "/settings/autoload.txt")
 
@@ -6599,7 +6593,7 @@ function Luna:CreateWindow(WindowSettings)
 						Title = "Interface",
 						Icon = "sparkle",
 						ImageSource = "Material",
-						Content = "Failed to load autoload config: " .. err,
+						Content = "Не удалось загрузить конфиг из автозагрузки: " .. err,
 					})
 				end
 
@@ -6607,7 +6601,7 @@ function Luna:CreateWindow(WindowSettings)
 					Title = "Interface",
 					Icon = "sparkle",
 					ImageSource = "Material",
-					Content = string.format("Auto loaded config %q", name),
+					Content = string.format("Загружен конфиг %q", name),
 				})
 
 			end 
