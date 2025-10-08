@@ -7212,7 +7212,7 @@ HorizontalAlignment="Right",
 
 local v={
 {
-Title="Cancel",
+Title="Назад",
 Variant="Secondary",
 Callback=function()end
 },
@@ -10785,7 +10785,7 @@ Title="Закрыть окно",
 Content="Вы хотите закрыть это окно? Вы не сможете открыть его снова.",
 Buttons={
 {
-Title="Cancel",
+Title="Назад",
 
 Callback=function()end,
 Variant="Secondary",
