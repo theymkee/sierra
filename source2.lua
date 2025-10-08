@@ -10781,8 +10781,8 @@ aq:CreateTopbarButton("Close","x",function()
 aq:SetToTheCenter()
 aq:Dialog{
 
-Title="Close Window",
-Content="Do you want to close this window? You will not be able to open it again.",
+Title="Закрыть окно",
+Content="Вы хотите закрыть это окно? Вы не сможете открыть его снова.",
 Buttons={
 {
 Title="Cancel",
@@ -10791,7 +10791,7 @@ Callback=function()end,
 Variant="Secondary",
 },
 {
-Title="Close Window",
+Title="Закрыть окно",
 
 Callback=function()aq:Close():Destroy()end,
 Variant="Primary",
