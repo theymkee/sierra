@@ -2874,7 +2874,7 @@ return aa end function a.r()
 return function(aa)
 return{
 Dark={
-Name="Dark",
+Name="Темная",
 
 Accent=Color3.fromHex"#18181b",
 Dialog=Color3.fromHex"#161616",
@@ -2886,7 +2886,7 @@ Button=Color3.fromHex"#52525b",
 Icon=Color3.fromHex"#a1a1aa"
 },
 Light={
-Name="Light",
+Name="Светлая",
 
 Accent=Color3.fromHex"#FFFFFF",
 Dialog=Color3.fromHex"#f4f4f5",
