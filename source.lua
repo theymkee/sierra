@@ -7181,9 +7181,9 @@ end
 
 local j=CreateNewInput("Hex","#"..aw.Default:ToHex())
 
-local l=CreateNewInput("Red",ToRGB(aw.Default).R)
-local m=CreateNewInput("Green",ToRGB(aw.Default).G)
-local p=CreateNewInput("Blue",ToRGB(aw.Default).B)
+local l=CreateNewInput("Красный",ToRGB(aw.Default).R)
+local m=CreateNewInput("Зеленый",ToRGB(aw.Default).G)
+local p=CreateNewInput("Синий",ToRGB(aw.Default).B)
 local r
 if aw.Transparency then
 r=CreateNewInput("Alpha",((1-aw.Transparency)*100).."%")
@@ -7217,7 +7217,7 @@ Variant="Secondary",
 Callback=function()end
 },
 {
-Title="Apply",
+Title="Применить",
 Icon="chevron-right",
 Variant="Primary",
 Callback=function()av(Color3.fromHSV(aw.Hue,aw.Sat,aw.Vib),aw.Transparency)end
