@@ -8434,9 +8434,9 @@ FillDirection="Vertical",
 }),
 ag("ImageLabel",{
 Size=UDim2.new(0,48,0,48),
-Image=ae.Icon"frown"[1],
-ImageRectOffset=ae.Icon"frown"[2].ImageRectPosition,
-ImageRectSize=ae.Icon"frown"[2].ImageRectSize,
+Image=ae.Icon"wind"[1],
+ImageRectOffset=ae.Icon"wind"[2].ImageRectPosition,
+ImageRectSize=ae.Icon"wind"[2].ImageRectSize,
 ThemeTag={
 ImageColor3="Icon"
 },
