@@ -8445,7 +8445,7 @@ ImageTransparency=.6,
 }),
 ag("TextLabel",{
 AutomaticSize="XY",
-Text="This tab is empty",
+Text="Пусто...",
 ThemeTag={
 TextColor3="Text"
 },
