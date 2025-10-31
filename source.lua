@@ -1939,7 +1939,7 @@ BackgroundTransparency=1,
 as,ar,
 })
 
-local au=af("Enter Key","key",nil,"Input",function(au)
+local au=af("Введите ключ","key",nil,"Input",function(au)
 am=au
 end)
 
@@ -2281,7 +2281,7 @@ task.wait(.4)
 ai(true)
 end
 
-local az=ae("Submit","arrow-right",function()
+local az=ae("Продолжить","arrow-right",function()
 local az=tostring(am or"empty")local aA=
 ag.Folder or ag.Title
 
