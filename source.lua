@@ -2044,7 +2044,7 @@ PaddingBottom=UDim.new(0,16),
 
 
 
-local ay=ae("Exit","log-out",function()
+local ay=ae("Закрыть","log-out",function()
 ak:Close()()
 end,"Tertiary",aw.Frame)
 
