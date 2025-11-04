@@ -2072,7 +2072,7 @@ if ag.KeySystem.API then
 
 local az=240
 local aA=false
-local aB=ae("Get key","key",nil,"Secondary",aw.Frame)
+local aB=ae("Получить ключ","key",nil,"Secondary",aw.Frame)
 
 local aC=ab.NewRoundFrame(99,"Squircle",{
 Size=UDim2.new(0,1,1,0),
